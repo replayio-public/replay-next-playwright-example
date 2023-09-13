@@ -5,6 +5,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
       - name: Waiting for 200 from the Vercel Preview
         uses: patrickedqvist/wait-for-vercel-preview@v1.3.1
         id: waitFor200
@@ -13,3 +22,8 @@ jobs:
           max_timeout: 60
       # access preview url
       - run: echo ${{steps.waitFor200.outputs.url}}
+
+      - name: Run Playwright tests
+        run: npx playwright test
+        env:
+          BASE_URL: ${{steps.waitFor200.outputs.url}}

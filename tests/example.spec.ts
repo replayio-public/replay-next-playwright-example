@@ -1,11 +1,10 @@
-import { test } from '@playwright/test';
-// import { test, expect } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
 test('can navigate', async ({ page }) => {
   await page.goto('/');
 
-  // // Expect a title "to contain" a substring.
-  // await expect(page).toHaveTitle(/Playwright/);
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle(/Create Next App/);
 });
 
 // test('get started link', async ({ page }) => {
