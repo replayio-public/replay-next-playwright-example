@@ -23,6 +23,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@playwright/test": "^1.37.1"
+    "@playwright/test": "^1.37.1",
+    "@replayio/playwright": "^1.0.14"
   }
 }
